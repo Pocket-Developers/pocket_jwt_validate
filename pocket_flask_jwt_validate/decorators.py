@@ -1,6 +1,7 @@
+import jwt
+import os
 from collections.abc import Callable
 from flask import request
-import jwt
 from werkzeug.exceptions import Unauthorized
 
 
@@ -10,7 +11,10 @@ def _format_keystring_as_pem(key_string: str):
 -----END PUBLIC KEY-----"""
 
 
-def jwt_required(public_key: str) -> Callable:
+PUBLIC_KEY = os.environ.get('AUTH_PUBLIC_KEY')
+
+
+def jwt_required(public_key=PUBLIC_KEY) -> Callable:
     def wrapper(func: Callable) -> Callable:
         def inner(*args, **kwargs):
             auth_header = request.headers.get('Authorization')
