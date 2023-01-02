@@ -16,3 +16,8 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+dependencies = [
+  'Flask >= 2.1.2',
+  'pyjwt >= 2.6.0',
+  'cryptography >= 39.0.0'
+]
