@@ -3,12 +3,12 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "pocket-flask-jwt-validate"
+name = "pocket-jwt-validate"
 version = "0.0.1"
 authors = [
   { name="Alex Dobrushskiy", email="adobrush@asu.edu" },
 ]
-description = "A small example package"
+description = "JWT validation for Pocket projects"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -17,7 +17,6 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 dependencies = [
-  'Flask >= 2.0.0',
   'pyjwt >= 2.4.0',
   'cryptography >= 37.0.0'
 ]
