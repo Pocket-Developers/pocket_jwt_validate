@@ -28,7 +28,7 @@ def validate_jwt(auth_header: str) -> dict:
         auth_token = ''
 
     if auth_token:
-        pk = _format_keystring_as_pem(public_key)
+        pk = _format_keystring_as_pem(PUBLIC_KEY)
         try:
             decoded = jwt.decode(auth_token, key=pk, algorithms=["ES256"])
             return decoded
