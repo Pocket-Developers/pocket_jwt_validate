@@ -16,6 +16,12 @@ class JwtValidationException(Exception):
 
 
 def validate_jwt(auth_header: str) -> dict:
+    """
+    On each JwtValidationException the application should return 401 response.
+    :param auth_header: String like `Bearer sdfkjhsdfkjhsdkfjhsdkfjhsdkfjhsdkjf`
+    :return: Decoded JWT. Or raises JwtValidationException
+
+    """
     if auth_header:
         auth_token = auth_header.split(" ")[1]
     else:
@@ -28,9 +34,9 @@ def validate_jwt(auth_header: str) -> dict:
             return decoded
             # here we can provide some info from JWT to view function if required
         except jwt.exceptions.PyJWTError as e:
-            raise Unauthorized()
+            raise JwtValidationException()
         except Exception as e:
-            raise Unauthorized()
+            raise JwtValidationException()
         # if all is fine - we'll call a view function
     else:
-        raise Unauthorized()
+        raise JwtValidationException()
